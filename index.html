@@ -2,22 +2,28 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>No Waste, Just Taste</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; background-color: #f5f9f4; color: #333; }
     header, footer { background-color: #4caf50; color: white; text-align: center; padding: 20px; }
     nav { background-color: #333; display: flex; justify-content: center; }
-    nav a { color: white; padding: 14px 20px; text-decoration: none; }
+    nav a { color: white; padding: 14px 20px; text-decoration: none; font-weight: bold; }
     nav a:hover { background-color: #ddd; color: black; }
     section { display: none; padding: 40px; text-align: center; }
     .active { display: block; }
-    .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .product { background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 16px; width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px; }
+    .product { background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 16px; width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .product:hover { transform: scale(1.05); }
     .product img { width: 100%; border-radius: 6px; }
     .product button { background-color: #4caf50; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+    .product button:hover { background-color: #45a049; }
     .contact { max-width: 600px; margin: 40px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     input, textarea { width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
     button { background-color: #4caf50; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background-color: #45a049; }
+    .product-description { font-size: 0.9rem; color: #666; margin-top: 10px; }
+    h2 { color: #333; }
   </style>
 </head>
 <body>
@@ -25,6 +31,7 @@
   <!-- Header und Navigation -->
   <header>
     <h1>No Waste, Just Taste</h1>
+    <p>Nachhaltigkeit trifft Genuss. Entdecke unsere geretteten Lebensmittel!</p>
   </header>
   <nav>
     <a href="javascript:void(0);" onclick="showSection('home')">Home</a>
@@ -35,8 +42,8 @@
   <!-- Home-Bereich -->
   <section id="home" class="active">
     <h2>Willkommen bei No Waste, Just Taste!</h2>
-    <p>Wir retten genießbare Lebensmittel, die sonst im Müll landen würden – nachhaltig, lecker und günstig.</p>
-    <p>Entdecke unsere geretteten Produkte oder kontaktiere uns direkt!</p>
+    <p>Unsere Mission ist es, Lebensmittel vor der Verschwendung zu retten und sie zu leckeren, gesunden Produkten zu verarbeiten. Mit unseren nachhaltigen Angeboten wollen wir dir helfen, bewusster und umweltfreundlicher zu konsumieren – ohne auf Geschmack zu verzichten.</p>
+    <p>Jedes Produkt, das du bei uns kaufst, trägt zu einer nachhaltigeren Zukunft bei. Schau dir unser Sortiment an und werde ein Teil der Lösung!</p>
   </section>
 
   <!-- Produkte-Bereich -->
@@ -47,43 +54,49 @@
       <div class="product">
         <img src="https://via.placeholder.com/200x150?text=Obstbox" alt="Obstbox">
         <h3>Bio Obst Box</h3>
-        <p>Gerettetes Obst direkt zu dir – regional & lecker.</p>
-        <p><strong>5,99 €</strong></p>
+        <p>Frisches Obst, das sonst im Müll landen würde – direkt von uns zu dir.</p>
+        <p><strong>Preis: 5,99 €</strong></p>
+        <p class="product-description">Eine Mischung aus verschiedenen Obstsorten, die in Bio-Qualität und nachhaltig produziert werden. Perfekt für deine tägliche Portion Vitamine!</p>
         <button>In den Warenkorb</button>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/200x150?text=Gemüse" alt="Gemüse">
+        <img src="https://via.placeholder.com/200x150?text=Gemüse" alt="Krummes Gemüse">
         <h3>Krummes Gemüse</h3>
-        <p>Unperfektes Gemüse mit perfektem Geschmack!</p>
-        <p><strong>4,49 €</strong></p>
+        <p>Unperfektes Gemüse, perfekt im Geschmack.</p>
+        <p><strong>Preis: 4,49 €</strong></p>
+        <p class="product-description">Unsere Auswahl an krummem Gemüse ist genauso nahrhaft wie perfektes Gemüse – nur, dass es sonst oft verschwendet wird. Jetzt retten!</p>
         <button>In den Warenkorb</button>
       </div>
       <div class="product">
         <img src="https://via.placeholder.com/200x150?text=Lebensmittelpaket" alt="Lebensmittelpaket">
         <h3>Lebensmittelpaket</h3>
         <p>Das Überraschungspaket aus geretteten Lebensmitteln.</p>
-        <p><strong>9,99 €</strong></p>
+        <p><strong>Preis: 9,99 €</strong></p>
+        <p class="product-description">Ein Paket mit einer bunten Mischung aus Lebensmitteln, die oft übersehen werden. Ideal für eine nachhaltige Mahlzeit!</p>
         <button>In den Warenkorb</button>
       </div>
       <div class="product">
         <img src="https://via.placeholder.com/200x150?text=Getränkebox" alt="Getränkebox">
         <h3>Gerettete Getränkebox</h3>
         <p>Gerettete Saft- und Limonadenboxen – perfekt für jede Party!</p>
-        <p><strong>7,49 €</strong></p>
+        <p><strong>Preis: 7,49 €</strong></p>
+        <p class="product-description">Unsere Getränkeboxen bestehen aus geretteten, aber noch vollkommen genießbaren Getränken, die eine zweite Chance verdienen!</p>
         <button>In den Warenkorb</button>
       </div>
       <div class="product">
         <img src="https://via.placeholder.com/200x150?text=Brotpaket" alt="Brotpaket">
         <h3>Frisches Brot Paket</h3>
         <p>Gerettetes frisches Brot – frisch und nachhaltig!</p>
-        <p><strong>4,99 €</strong></p>
+        <p><strong>Preis: 4,99 €</strong></p>
+        <p class="product-description">Köstliches, frisch gebackenes Brot, das vor dem Ablaufen gerettet wird. Perfekt für deine Sandwiches oder als Beilage zu jedem Mahl!</p>
         <button>In den Warenkorb</button>
       </div>
       <div class="product">
         <img src="https://via.placeholder.com/200x150?text=Bio-Milch" alt="Bio-Milch">
         <h3>Bio Milch</h3>
-        <p>Gerettete Bio-Milch, die kurz vor dem Ablaufdatum stand – perfekt für deinen Kaffee.</p>
-        <p><strong>2,49 €</strong></p>
+        <p>Gerettete Bio-Milch, die kurz vor dem Ablaufdatum stand.</p>
+        <p><strong>Preis: 2,49 €</strong></p>
+        <p class="product-description">Frische Bio-Milch, die auf den letzten Metern gerettet wurde – perfekt für deinen Kaffee oder Müsli!</p>
         <button>In den Warenkorb</button>
       </div>
     </div>
@@ -92,7 +105,7 @@
   <!-- Kontakt-Bereich -->
   <section id="kontakt">
     <h2>Kontakt</h2>
-    <p>Wir freuen uns auf deine Nachricht!</p>
+    <p>Wir freuen uns auf deine Nachricht! Zögere nicht, uns bei Fragen oder Anregungen zu kontaktieren.</p>
     <div class="contact">
       <form>
         <input type="text" placeholder="Dein Name" required>
@@ -100,13 +113,13 @@
         <textarea placeholder="Deine Nachricht" rows="5" required></textarea>
         <button type="submit">Absenden</button>
       </form>
-      <p style="margin-top:20px;">Oder per E-Mail: kontakt@nowaste.de</p>
+      <p style="margin-top:20px;">Oder per E-Mail: <a href="mailto:kontakt@nowaste.de">kontakt@nowaste.de</a></p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 No Waste, Just Taste
+    <p>&copy; 2025 No Waste, Just Taste | Alle Rechte vorbehalten.</p>
   </footer>
 
   <script>
