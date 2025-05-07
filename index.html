@@ -1,216 +1,104 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>No Waste, Just Taste</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f5f9f4;
-      color: #333;
-    }
-
-    header {
-      background-color: #4caf50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    <nav>
-  <a href="#home">Home</a>
-  <a href="#products">Produkte</a>
-  <a href="#contact">Kontakt</a>
-</nav>
-    
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #333;
-    }
-
-    nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      text-align: center;
-    }
-
-    nav a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-      gap: 20px;
-    }
-
-    .product {
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 16px;
-      width: 250px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-    }
-
-    .product:hover {
-      transform: scale(1.05);
-    }
-
-    .product img {
-      width: 100%;
-      border-radius: 6px;
-    }
-
-    .product h3 {
-      margin: 10px 0 5px;
-    }
-
-    .product p {
-      font-size: 14px;
-      margin: 5px 0;
-    }
-
-    .product button {
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    #cart {
-      background-color: #e8f5e9;
-      padding: 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #c8e6c9;
-    }
-
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-
-    .contact-form button {
-      background-color: #4caf50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .contact-form button:hover {
-      background-color: #45a049;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f5f9f4; color: #333; }
+    header, footer { background-color: #4caf50; color: white; text-align: center; padding: 20px; }
+    nav { background-color: #333; display: flex; justify-content: center; }
+    nav a { color: white; padding: 14px 20px; text-decoration: none; }
+    nav a:hover { background-color: #ddd; color: black; }
+    section { display: none; padding: 40px; text-align: center; }
+    .active { display: block; }
+    .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .product { background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 16px; width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .product img { width: 100%; border-radius: 6px; }
+    .product button { background-color: #4caf50; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+    .contact { max-width: 600px; margin: 40px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    input, textarea { width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    button { background-color: #4caf50; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
   </style>
 </head>
 <body>
+
+  <!-- Header und Navigation -->
   <header>
     <h1>No Waste, Just Taste</h1>
-    <p>Gerettete Lebensmittel, nachhaltig genießen</p>
   </header>
-
   <nav>
-    <a href="#">Home</a>
-    <a href="#">Produkte</a>
-    <a href="#">Über uns</a>
-    <a href="#">Kontakt</a>
+    <a href="javascript:void(0);" onclick="showSection('home')">Home</a>
+    <a href="javascript:void(0);" onclick="showSection('produkte')">Produkte</a>
+    <a href="javascript:void(0);" onclick="showSection('kontakt')">Kontakt</a>
   </nav>
 
-  <section class="products">
-    <div class="product">
-      <img src="https://via.placeholder.com/200x150?text=Bio+Obst" alt="Bio Obst Box">
-      <h3>Bio Obst Box</h3>
-      <p>Frisches, gerettetes Obst – direkt aus der Region!</p>
-      <p><strong>5,99 €</strong></p>
-      <button onclick="addToCart('Bio Obst Box', 5.99)">In den Warenkorb</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/200x150?text=Krummes+Gemüse" alt="Gemüse">
-      <h3>Krummes Gemüse</h3>
-      <p>Gerettetes Gemüse, das nicht perfekt aussieht, aber hervorragend schmeckt!</p>
-      <p><strong>4,49 €</strong></p>
-      <button onclick="addToCart('Krummes Gemüse', 4.49)">In den Warenkorb</button>
-    </div>
-   <div class="product">
-  <img src="https://via.placeholder.com/200x150?text=Gerettetes+Brot" alt="Brotpaket">
-  <h3>Gerettetes Brot</h3>
-  <p>Knuspriges Brot vom Vortag, frisch und lecker!</p>
-  <p><strong>2,49 €</strong></p>
-  <button onclick="addToCart('Gerettetes Brot', 2.49)">In den Warenkorb</button>
-</div>
-    <div class="product">
-      <img src="https://via.placeholder.com/200x150?text=Snackbox" alt="Snackbox">
-      <h3>Snackbox gerettet</h3>
-      <p>Snacks, die das Mindesthaltbarkeitsdatum fast überschritten haben.</p>
-      <p><strong>3,99 €</strong></p>
-      <button onclick="addToCart('Snackbox', 3.99)">In den Warenkorb</button>
+  <!-- Home-Bereich -->
+  <section id="home" class="active">
+    <h2>Willkommen bei No Waste, Just Taste!</h2>
+    <p>Wir retten genießbare Lebensmittel, die sonst im Müll landen würden – nachhaltig, lecker und günstig.</p>
+    <p>Entdecke unsere geretteten Produkte oder kontaktiere uns direkt!</p>
+  </section>
+
+  <!-- Produkte-Bereich -->
+  <section id="produkte">
+    <h2>Unsere Produkte</h2>
+    <p>Alle unsere Produkte sind nachhaltig und werden aus geretteten Lebensmitteln hergestellt. Hier findest du eine Auswahl unserer Angebote:</p>
+    <div class="products">
+      <div class="product">
+        <img src="https://via.placeholder.com/200x150?text=Obstbox" alt="Obstbox">
+        <h3>Bio Obst Box</h3>
+        <p>Gerettetes Obst direkt zu dir – regional & lecker.</p>
+        <p><strong>5,99 €</strong></p>
+        <button>In den Warenkorb</button>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/200x150?text=Gemüse" alt="Gemüse">
+        <h3>Krummes Gemüse</h3>
+        <p>Unperfektes Gemüse mit perfektem Geschmack!</p>
+        <p><strong>4,49 €</strong></p>
+        <button>In den Warenkorb</button>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/200x150?text=Lebensmittelpaket" alt="Lebensmittelpaket">
+        <h3>Lebensmittelpaket</h3>
+        <p>Das Überraschungspaket aus geretteten Lebensmitteln.</p>
+        <p><strong>9,99 €</strong></p>
+        <button>In den Warenkorb</button>
+      </div>
     </div>
   </section>
 
-  <section id="cart">
-    <h2>Warenkorb</h2>
-    <ul id="cart-items"></ul>
-    <p><strong>Gesamt: <span id="total">0.00</span> €</strong></p>
-  </section>
-
-  <section id="contact">
+  <!-- Kontakt-Bereich -->
+  <section id="kontakt">
     <h2>Kontakt</h2>
-    <div class="contact-form">
-      <h3>Hast du Fragen? Kontaktiere uns!</h3>
+    <p>Wir freuen uns auf deine Nachricht!</p>
+    <div class="contact">
       <form>
         <input type="text" placeholder="Dein Name" required>
         <input type="email" placeholder="Deine E-Mail-Adresse" required>
-        <textarea placeholder="Deine Nachricht" rows="4" required></textarea>
-        <button type="submit">Nachricht senden</button>
+        <textarea placeholder="Deine Nachricht" rows="5" required></textarea>
+        <button type="submit">Absenden</button>
       </form>
+      <p style="margin-top:20px;">Oder per E-Mail: kontakt@nowaste.de</p>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    &copy; 2025 No Waste, Just Taste – Für eine nachhaltige Zukunft
+    &copy; 2025 No Waste, Just Taste
   </footer>
 
   <script>
-    const cartItems = document.getElementById('cart-items');
-    const total = document.getElementById('total');
-    let sum = 0;
+    function showSection(sectionId) {
+      // Alle Sektionen ausblenden
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => section.classList.remove('active'));
 
-    function addToCart(name, price) {
-      const li = document.createElement('li');
-      li.textContent = `${name} – ${price.toFixed(2)} €`;
-      cartItems.appendChild(li);
-      sum += price;
-      total.textContent = sum.toFixed(2);
+      // Die gewählte Sektion anzeigen
+      const activeSection = document.getElementById(sectionId);
+      activeSection.classList.add('active');
     }
   </script>
+
 </body>
 </html>
