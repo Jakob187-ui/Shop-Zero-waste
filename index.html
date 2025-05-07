@@ -24,6 +24,11 @@
     button:hover { background-color: #45a049; }
     .product-description { font-size: 0.9rem; color: #666; margin-top: 10px; }
     h2 { color: #333; }
+    .cart { position: fixed; top: 20px; right: 20px; background-color: #4caf50; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+    .cart:hover { background-color: #45a049; }
+    .cart-details { display: none; position: absolute; top: 40px; right: 0; background: white; color: black; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 250px; }
+    .cart-details ul { list-style: none; padding: 0; margin: 0; }
+    .cart-details li { margin-bottom: 10px; }
   </style>
 </head>
 <body>
@@ -39,6 +44,15 @@
     <a href="javascript:void(0);" onclick="showSection('kontakt')">Kontakt</a>
   </nav>
 
+  <!-- Warenkorb Button -->
+  <div class="cart" onclick="toggleCart()">Warenkorb (<span id="cart-count">0</span> Produkte)</div>
+  <div class="cart-details" id="cart-details">
+    <h3>Warenkorb</h3>
+    <ul id="cart-list"></ul>
+    <p><strong>Gesamt: <span id="cart-total">0,00 €</span></strong></p>
+    <button onclick="clearCart()">Warenkorb leeren</button>
+  </div>
+
   <!-- Home-Bereich -->
   <section id="home" class="active">
     <h2>Willkommen bei No Waste, Just Taste!</h2>
@@ -51,54 +65,23 @@
     <h2>Unsere Produkte</h2>
     <p>Alle unsere Produkte sind nachhaltig und werden aus geretteten Lebensmitteln hergestellt. Hier findest du eine Auswahl unserer Angebote:</p>
     <div class="products">
-      <div class="product">
+      <div class="product" data-name="Bio Obst Box" data-price="5.99">
         <img src="https://via.placeholder.com/200x150?text=Obstbox" alt="Obstbox">
         <h3>Bio Obst Box</h3>
         <p>Frisches Obst, das sonst im Müll landen würde – direkt von uns zu dir.</p>
         <p><strong>Preis: 5,99 €</strong></p>
         <p class="product-description">Eine Mischung aus verschiedenen Obstsorten, die in Bio-Qualität und nachhaltig produziert werden. Perfekt für deine tägliche Portion Vitamine!</p>
-        <button>In den Warenkorb</button>
+        <button onclick="addToCart('Bio Obst Box', 5.99)">In den Warenkorb</button>
       </div>
-      <div class="product">
+      <div class="product" data-name="Krummes Gemüse" data-price="4.49">
         <img src="https://via.placeholder.com/200x150?text=Gemüse" alt="Krummes Gemüse">
         <h3>Krummes Gemüse</h3>
         <p>Unperfektes Gemüse, perfekt im Geschmack.</p>
         <p><strong>Preis: 4,49 €</strong></p>
         <p class="product-description">Unsere Auswahl an krummem Gemüse ist genauso nahrhaft wie perfektes Gemüse – nur, dass es sonst oft verschwendet wird. Jetzt retten!</p>
-        <button>In den Warenkorb</button>
+        <button onclick="addToCart('Krummes Gemüse', 4.49)">In den Warenkorb</button>
       </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/200x150?text=Lebensmittelpaket" alt="Lebensmittelpaket">
-        <h3>Lebensmittelpaket</h3>
-        <p>Das Überraschungspaket aus geretteten Lebensmitteln.</p>
-        <p><strong>Preis: 9,99 €</strong></p>
-        <p class="product-description">Ein Paket mit einer bunten Mischung aus Lebensmitteln, die oft übersehen werden. Ideal für eine nachhaltige Mahlzeit!</p>
-        <button>In den Warenkorb</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/200x150?text=Getränkebox" alt="Getränkebox">
-        <h3>Gerettete Getränkebox</h3>
-        <p>Gerettete Saft- und Limonadenboxen – perfekt für jede Party!</p>
-        <p><strong>Preis: 7,49 €</strong></p>
-        <p class="product-description">Unsere Getränkeboxen bestehen aus geretteten, aber noch vollkommen genießbaren Getränken, die eine zweite Chance verdienen!</p>
-        <button>In den Warenkorb</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/200x150?text=Brotpaket" alt="Brotpaket">
-        <h3>Frisches Brot Paket</h3>
-        <p>Gerettetes frisches Brot – frisch und nachhaltig!</p>
-        <p><strong>Preis: 4,99 €</strong></p>
-        <p class="product-description">Köstliches, frisch gebackenes Brot, das vor dem Ablaufen gerettet wird. Perfekt für deine Sandwiches oder als Beilage zu jedem Mahl!</p>
-        <button>In den Warenkorb</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/200x150?text=Bio-Milch" alt="Bio-Milch">
-        <h3>Bio Milch</h3>
-        <p>Gerettete Bio-Milch, die kurz vor dem Ablaufdatum stand.</p>
-        <p><strong>Preis: 2,49 €</strong></p>
-        <p class="product-description">Frische Bio-Milch, die auf den letzten Metern gerettet wurde – perfekt für deinen Kaffee oder Müsli!</p>
-        <button>In den Warenkorb</button>
-      </div>
+      <!-- Weitere Produkte hier hinzufügen -->
     </div>
   </section>
 
@@ -123,14 +106,50 @@
   </footer>
 
   <script>
+    let cart = [];
+
     function showSection(sectionId) {
-      // Alle Sektionen ausblenden
       const sections = document.querySelectorAll('section');
       sections.forEach(section => section.classList.remove('active'));
-
-      // Die gewählte Sektion anzeigen
       const activeSection = document.getElementById(sectionId);
       activeSection.classList.add('active');
+    }
+
+    function addToCart(productName, productPrice) {
+      cart.push({ name: productName, price: productPrice });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartCount = document.getElementById('cart-count');
+      const cartTotal = document.getElementById('cart-total');
+      const cartList = document.getElementById('cart-list');
+
+      cartCount.textContent = cart.length;
+      const totalPrice = cart.reduce((sum, product) => sum + product.price, 0).toFixed(2);
+      cartTotal.textContent = `${totalPrice} €`;
+
+      cartList.innerHTML = '';
+      cart.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.name} - ${item.price.toFixed(2)} €`;
+        cartList.appendChild(listItem);
+      });
+
+      if (cart.length === 0) {
+        cartList.innerHTML = '<li>Dein Warenkorb ist leer.</li>';
+      }
+    }
+
+    function toggleCart() {
+      const cartDetails = document.getElementById('cart-details');
+      cartDetails.style.display = cartDetails.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function clearCart() {
+      cart = [];
+      updateCart();
+      toggleCart();
     }
   </script>
 
