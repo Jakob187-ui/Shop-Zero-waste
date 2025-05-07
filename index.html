@@ -29,6 +29,24 @@
     .cart-details { display: none; position: absolute; top: 40px; right: 0; background: white; color: black; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 250px; }
     .cart-details ul { list-style: none; padding: 0; margin: 0; }
     .cart-details li { margin-bottom: 10px; }
+ #produktForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin-bottom: 30px;
+}
+
+#produktForm input, #produktForm button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.product {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 15px;
+}
   </style>
 </head>
 <body>
@@ -122,7 +140,23 @@
       <!-- Weitere Produkte hinzufügen nach Bedarf -->
     </div>
   </section>
+<section id="produkt-hinzufuegen">
+  <h2>Eigenes Produkt hinzufügen</h2>
+  <form id="produktForm">
+    <input type="text" id="produktName" placeholder="Produktname" required>
+    <input type="text" id="produktBeschreibung" placeholder="Beschreibung" required>
+    <input type="text" id="produktPreis" placeholder="Preis in €" required>
+    <input type="url" id="produktBild" placeholder="Bild-URL (optional)">
+    <button type="submit">Produkt hinzufügen</button>
+  </form>
+</section>
 
+<section id="benutzerProdukte">
+  <h2>Deine hinzugefügten Produkte</h2>
+  <div class="products" id="neueProdukteContainer">
+    <!-- Neue Produkte werden hier angezeigt -->
+  </div>
+</section>
   <!-- Kontakt-Bereich -->
   <section id="kontakt">
     <h2>Kontakt</h2>
@@ -190,6 +224,32 @@
       toggleCart();
     }
   </script>
+<script>
+  document.getElementById("produktForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
+    const name = document.getElementById("produktName").value;
+    const beschreibung = document.getElementById("produktBeschreibung").value;
+    const preis = document.getElementById("produktPreis").value;
+    const bildUrl = document.getElementById("produktBild").value;
+
+    const container = document.getElementById("neueProdukteContainer");
+
+    const produktElement = document.createElement("div");
+    produktElement.classList.add("product");
+
+    produktElement.innerHTML = `
+      ${bildUrl ? `<img src="${bildUrl}" alt="${name}" style="width:100%; max-height: 200px; object-fit: cover;">` : ""}
+      <h3>${name}</h3>
+      <p>${beschreibung}</p>
+      <p><strong>Preis: ${preis} €</strong></p>
+    `;
+
+    container.appendChild(produktElement);
+
+    // Formular zurücksetzen
+    document.getElementById("produktForm").reset();
+  });
+</script>
 </body>
 </html>
