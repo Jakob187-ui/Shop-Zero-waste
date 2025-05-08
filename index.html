@@ -69,3 +69,66 @@
   <h2>Willkommen bei No Waste, Just Taste!</h2>
   <p>Wir retten Lebensmittel, die sonst im Müll landen würden, und machen daraus leckere Produkte. Unterstütze unsere Mission – für mehr Nachhaltigkeit und weniger Verschwendung!</p>
 </section>
+  <section id="produkte">
+  <h2>Unsere Produkte</h2>
+  <div class="products" id="product-list">
+    <!-- Vorgefertigte Produkte -->
+    <div class="product">
+      <img src="https://via.placeholder.com/250x150?text=Bananenbrot" alt="Bananenbrot">
+      <h3>Bananenbrot</h3>
+      <p class="product-description">Saftiges Brot aus überreifen Bananen – süß, nachhaltig, lecker!</p>
+      <p>3,50 €</p>
+      <button onclick="addToCart('Bananenbrot', 3.50)">In den Warenkorb</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/250x150?text=Gemüsesuppe" alt="Gemüsesuppe">
+      <h3>Gemüsesuppe</h3>
+      <p class="product-description">Warme Suppe aus geretteten Karotten, Sellerie und Tomaten.</p>
+      <p>2,80 €</p>
+      <button onclick="addToCart('Gemüsesuppe', 2.80)">In den Warenkorb</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/250x150?text=Smoothie" alt="Smoothie">
+      <h3>Frucht-Smoothie</h3>
+      <p class="product-description">Ein bunter Mix aus geretteten Beeren, Bananen und Äpfeln.</p>
+      <p>2,50 €</p>
+      <button onclick="addToCart('Frucht-Smoothie', 2.50)">In den Warenkorb</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/250x150?text=Brotchips" alt="Brotchips">
+      <h3>Brotchips</h3>
+      <p class="product-description">Knusprige Chips aus altem Brot, perfekt gewürzt.</p>
+      <p>1,80 €</p>
+      <button onclick="addToCart('Brotchips', 1.80)">In den Warenkorb</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/250x150?text=Tomatensoße" alt="Tomatensoße">
+      <h3>Tomatensoße</h3>
+      <p class="product-description">Frische Soße aus geretteten Tomaten, perfekt für Pasta.</p>
+      <p>2,00 €</p>
+      <button onclick="addToCart('Tomatensoße', 2.00)">In den Warenkorb</button>
+    </div>
+  </div>
+</section>
+
+<section id="hinzufuegen">
+  <h2>Eigenes Produkt hinzufügen</h2>
+  <form id="produktForm" onsubmit="hinzufuegenProdukt(event)">
+    <input type="text" id="produktName" placeholder="Produktname" required />
+    <input type="number" id="produktPreis" step="0.01" placeholder="Preis in €" required />
+    <input type="text" id="produktBild" placeholder="Bild-URL (optional)" />
+    <textarea id="produktBeschreibung" placeholder="Beschreibung (optional)"></textarea>
+    <button type="submit">Produkt hinzufügen</button>
+  </form>
+</section>
+
+<section id="kontakt">
+  <h2>Kontaktiere uns</h2>
+  <div class="contact">
+    <p>Du hast Fragen, Ideen oder möchtest mitmachen? Schreib uns!</p>
+    <input type="text" placeholder="Dein Name" required />
+    <input type="email" placeholder="Deine E-Mail" required />
+    <textarea placeholder="Deine Nachricht" rows="5" required></textarea>
+    <button>Absenden</button>
+  </div>
+</section>
