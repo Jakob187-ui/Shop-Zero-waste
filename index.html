@@ -55,41 +55,62 @@
   <section id="produkte">
     <h2>Unsere Produkte</h2>
     <div class="products" id="produktListe">
-      <div class="product">
-        <img src="https://via.placeholder.com/250x150?text=Krumme+Karotten" alt="Krumme Karotten">
-        <h3>Krumme Karotten</h3>
-        <p>Ungewöhnlich geformt, aber voller Geschmack.</p>
-        <p><strong>1,50 €</strong></p>
-        <button onclick="addToCart('Krumme Karotten', 1.5)">In den Warenkorb</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/250x150?text=Überreife+Bananen" alt="Überreife Bananen">
-        <h3>Überreife Bananen</h3>
-        <p>Ideal für Smoothies oder Bananenbrot.</p>
-        <p><strong>1,20 €</strong></p>
-        <button onclick="addToCart('Überreife Bananen', 1.2)">In den Warenkorb</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/250x150?text=Gerettetes+Brot" alt="Gerettetes Brot">
-        <h3>Gerettetes Brot</h3>
-        <p>Frisch vom Vortag – zum halben Preis.</p>
-        <p><strong>2,00 €</strong></p>
-        <button onclick="addToCart('Gerettetes Brot', 2.0)">In den Warenkorb</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/250x150?text=Verbeulte+Tomaten" alt="Verbeulte Tomaten">
-        <h3>Verbeulte Tomaten</h3>
-        <p>Perfekt für Soßen oder Suppen.</p>
-        <p><strong>1,80 €</strong></p>
-        <button onclick="addToCart('Verbeulte Tomaten', 1.8)">In den Warenkorb</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/250x150?text=Knubbelige+Kartoffeln" alt="Knubbelige Kartoffeln">
-        <h3>Knubbelige Kartoffeln</h3>
-        <p>Schmackhaft und vielseitig einsetzbar.</p>
-        <p><strong>1,60 €</strong></p>
-        <button onclick="addToCart('Knubbelige Kartoffeln', 1.6)">In den Warenkorb</button>
-      </div>
+      <div class="products">
+  <div class="product" data-name="Bio Obst Box" data-price="5.99">
+    <img src="IMG_0827.jpeg" alt="Obstbox">
+    <h3>Bio Obst Box</h3>
+    <p>Frisches Obst, das sonst im Müll landen würde – direkt von uns zu dir.</p>
+    <p><strong>Preis: 5,99 €</strong></p>
+    <p class="product-description">Eine Mischung aus verschiedenen Obstsorten, die in Bio-Qualität und nachhaltig produziert werden. Perfekt für deine tägliche Portion Vitamine!</p>
+    <button onclick="addToCart('Bio Obst Box', 5.99)">In den Warenkorb</button>
+  </div>
+
+  <div class="product" data-name="Krummes Gemüse" data-price="4.49">
+    <img src="IMG_0828.png" alt="Krummes Gemüse">
+    <h3>Krummes Gemüse</h3>
+    <p>Unperfektes Gemüse, perfekt im Geschmack.</p>
+    <p><strong>Preis: 4,49 €</strong></p>
+    <p class="product-description">Unsere Auswahl an krummem Gemüse ist genauso nahrhaft wie perfektes Gemüse – nur, dass es sonst oft verschwendet wird. Jetzt retten!</p>
+    <button onclick="addToCart('Krummes Gemüse', 4.49)">In den Warenkorb</button>
+  </div>
+
+  <div class="product" data-name="Gerettetes Brot" data-price="2.99">
+    <img src="IMG_0829.jpeg" alt="Gerettetes Brot">
+    <h3>Gerettetes Brot</h3>
+    <p>Frisches, gerettetes Brot für deinen täglichen Genuss.</p>
+    <p><strong>Preis: 2,99 €</strong></p>
+    <p class="product-description">Brot, das aufgrund von Überproduktion übrig blieb. Schmeckt genauso gut und trägt zur Reduzierung der Lebensmittelverschwendung bei!</p>
+    <button onclick="addToCart('Gerettetes Brot', 2.99)">In den Warenkorb</button>
+  </div>
+
+  <div class="product" data-name="Selbstgemachte Marmelade" data-price="3.99">
+    <img src="IMG_0830.jpeg" alt="Selbstgemachte Marmelade">
+    <h3>Selbstgemachte Marmelade</h3>
+    <p>Leckere Marmelade aus geretteten Früchten.</p>
+    <p><strong>Preis: 3,99 €</strong></p>
+    <p class="product-description">Unsere Marmeladen bestehen aus geretteten Früchten, die zu leckeren, süßen Konfitüren verarbeitet werden. Ein Genuss auf deinem Frühstückstisch!</p>
+    <button onclick="addToCart('Selbstgemachte Marmelade', 3.99)">In den Warenkorb</button>
+  </div>
+
+  <div class="product" data-name="Fruchtige Smoothies" data-price="4.99">
+    <img src="IMG_0831.jpeg" alt="Fruchtige Smoothies">
+    <h3>Fruchtige Smoothies</h3>
+    <p>Leckere Smoothies aus geretteten Früchten.</p>
+    <p><strong>Preis: 4,99 €</strong></p>
+    <p class="product-description">Unsere Smoothies werden aus geretteten Früchten hergestellt, die frisch verarbeitet und zu gesunden Getränken verarbeitet werden.</p>
+    <button onclick="addToCart('Fruchtige Smoothies', 4.99)">In den Warenkorb</button>
+  </div>
+
+  <div class="product" data-name="Vegane Suppe" data-price="6.49">
+    <img src="IMG_0832.jpeg" alt="Vegane Suppe">
+    <h3>Vegane Suppe</h3>
+    <p>Wärmende Suppe aus geretteten Zutaten.</p>
+    <p><strong>Preis: 6,49 €</strong></p>
+    <p class="product-description">Eine herzhafte, vegane Suppe, hergestellt aus frischen Zutaten, die sonst weggeworfen worden wären. Ein perfektes Abendessen!</p>
+    <button onclick="addToCart('Vegane Suppe', 6.49)">In den Warenkorb</button>
+  </div>
+</div>
+      
     </div>
     <h3>Eigenes Produkt hinzufügen</h3>
     <form id="produktForm">
