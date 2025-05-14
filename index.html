@@ -6,7 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>No Waste, Just Taste</title>
   <style>
-   .custom-ad {
+  .sidebar-ad {
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
+  width: 200px;
+  background-color: #fffbe6;
+  border: 2px solid #facc15;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+  z-index: 1000;
+}
+
+.sidebar-ad p {
+  font-weight: bold;
+  color: #92400e;
+  margin-bottom: 10px;
+}
+
+.sidebar-ad img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-ad img:hover {
+  transform: scale(1.05);
+}
+    .custom-ad {
   background-color: #fef3c7;
   border: 2px solid #facc15;
   border-radius: 8px;
@@ -229,5 +260,11 @@
       e.target.reset();
     });
   </script>
+<div class="sidebar-ad">
+  <p>Anzeige</p>
+  <a href="https://dein-link.de" target="_blank">
+    <img src="werbung-seite.jpg" alt="Werbung">
+  </a>
+</div>
 </body>
 </html>
