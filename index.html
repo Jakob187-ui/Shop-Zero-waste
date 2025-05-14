@@ -6,6 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>No Waste, Just Taste</title>
   <style>
+   .custom-ad {
+  background-color: #fef3c7;
+  border: 2px solid #facc15;
+  border-radius: 8px;
+  margin: 30px auto;
+  padding: 10px;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.custom-ad p {
+  font-weight: bold;
+  color: #92400e;
+  margin-bottom: 10px;
+}
+
+.custom-ad img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.custom-ad img:hover {
+  transform: scale(1.02);
+}
     body { font-family: Arial, sans-serif; margin: 0; background-color: #f5f9f4; color: #333; }
     header, footer { background-color: #4caf50; color: white; text-align: center; padding: 20px; }
     nav { background-color: #333; display: flex; justify-content: center; }
@@ -37,6 +65,12 @@
     <p>Nachhaltigkeit trifft Genuss. Entdecke unsere geretteten Lebensmittel!</p>
   <img src="IMG_0765.jpeg" alt="Unser Logo" style="height: 80px;">
   </header>
+ <div class="custom-ad">
+  <p>Anzeige</p>
+  <a href="https://dein-link-zu-einem-projekt.de" target="_blank">
+    <img src="werbung1.jpg" alt="Werbung für Produkt X">
+  </a>
+</div>
   <nav>
     <a href="#" onclick="showSection('home')">Home</a>
     <a href="#" onclick="showSection('produkte')">Produkte</a>
